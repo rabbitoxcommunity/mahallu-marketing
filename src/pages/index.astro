@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { I18nProvider } from '../components/providers/I18nProvider.jsx'
+import { Navbar } from '../components/layout/Navbar.jsx'
+import { Footer } from '../components/layout/Footer.jsx'
+import { HeroSection } from '../components/sections/HeroSection.jsx'
+import { TrustSection } from '../components/sections/TrustSection.jsx'
+import { FeaturesSection } from '../components/sections/FeaturesSection.jsx'
+import { WhyMahalluSection } from '../components/sections/WhyMahalluSection.jsx'
+import { ProductGallerySection } from '../components/sections/ProductGallerySection.jsx'
+import { PublicPortalShowcase } from '../components/sections/PublicPortalShowcase.jsx'
+import { WorkflowSection } from '../components/sections/WorkflowSection.jsx'
+import { FAQSection } from '../components/sections/FAQSection.jsx'
+import { ContactSection } from '../components/sections/ContactSection.jsx'
+
+export const prerender = true
+---
+
+<Layout title="Mahallu ERP - Community Management Platform">
+  <I18nProvider client:load>
+    <Navbar client:load />
+    <main class="flex-1 w-full flex flex-col items-center min-h-screen">
+      <HeroSection client:load />
+      <TrustSection client:load />
+      <FeaturesSection client:load />
+      <WhyMahalluSection client:load />
+      <ProductGallerySection client:load />
+      <PublicPortalShowcase client:load />
+      <WorkflowSection client:load />
+      <FAQSection client:load />
+      <ContactSection client:load />
+    </main>
+    <Footer client:load />
+  </I18nProvider>
+</Layout>
