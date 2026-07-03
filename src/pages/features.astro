@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { I18nProvider } from '../components/providers/I18nProvider.jsx'
+import { Navbar } from '../components/layout/Navbar.jsx'
+import { Footer } from '../components/layout/Footer.jsx'
+import { FeaturesSection } from '../components/sections/FeaturesSection.jsx'
+import { WhyMahalluSection } from '../components/sections/WhyMahalluSection.jsx'
+import { ProductGallerySection } from '../components/sections/ProductGallerySection.jsx'
+import { PublicPortalShowcase } from '../components/sections/PublicPortalShowcase.jsx'
+
+export const prerender = true
+---
+
+<Layout 
+  title="Features & Products - Mahallu ERP"
+  description="Discover the comprehensive features and products offered by Mahallu ERP for community and organizational management."
+>
+  <I18nProvider client:load>
+    <Navbar client:load />
+    <main class="flex-1 w-full flex flex-col items-center min-h-screen pt-24">
+      <FeaturesSection client:load />
+      <WhyMahalluSection client:load />
+      <ProductGallerySection client:load />
+      <PublicPortalShowcase client:load />
+    </main>
+    <Footer client:load />
+  </I18nProvider>
+</Layout>

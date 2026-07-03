@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { I18nProvider } from '../components/providers/I18nProvider.jsx'
+import { Navbar } from '../components/layout/Navbar.jsx'
+import { Footer } from '../components/layout/Footer.jsx'
+import { ContactSection } from '../components/sections/ContactSection.jsx'
+
+export const prerender = true
+---
+
+<Layout 
+  title="Contact Us - Mahallu ERP"
+  description="Get in touch with the Mahallu ERP team to learn more about our platform or request support."
+>
+  <I18nProvider client:load>
+    <Navbar client:load />
+    <main class="flex-1 w-full flex flex-col items-center min-h-screen pt-24">
+      <ContactSection client:load />
+    </main>
+    <Footer client:load />
+  </I18nProvider>
+</Layout>

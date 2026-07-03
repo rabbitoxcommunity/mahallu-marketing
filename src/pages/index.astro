@@ -5,30 +5,47 @@ import { Navbar } from '../components/layout/Navbar.jsx'
 import { Footer } from '../components/layout/Footer.jsx'
 import { HeroSection } from '../components/sections/HeroSection.jsx'
 import { TrustSection } from '../components/sections/TrustSection.jsx'
-import { FeaturesSection } from '../components/sections/FeaturesSection.jsx'
-import { WhyMahalluSection } from '../components/sections/WhyMahalluSection.jsx'
-import { ProductGallerySection } from '../components/sections/ProductGallerySection.jsx'
-import { PublicPortalShowcase } from '../components/sections/PublicPortalShowcase.jsx'
 import { WorkflowSection } from '../components/sections/WorkflowSection.jsx'
+import { DataModelSection } from '../components/sections/DataModelSection.jsx'
+import { FavoritesSection } from '../components/sections/FavoritesSection.jsx'
 import { FAQSection } from '../components/sections/FAQSection.jsx'
-import { ContactSection } from '../components/sections/ContactSection.jsx'
+import { Button } from '../components/common/Button.jsx'
+import { RevealText } from '../components/animations/RevealText.jsx'
 
 export const prerender = true
 ---
 
-<Layout title="Mahallu ERP - Community Management Platform">
+<Layout title="Mahallu ERP - Modern Community Management Platform">
   <I18nProvider client:load>
     <Navbar client:load />
-    <main class="flex-1 w-full flex flex-col items-center min-h-screen">
+    <main class="flex-1 w-full flex flex-col items-center min-h-screen pb-20">
       <HeroSection client:load />
       <TrustSection client:load />
-      <FeaturesSection client:load />
-      <WhyMahalluSection client:load />
-      <ProductGallerySection client:load />
-      <PublicPortalShowcase client:load />
       <WorkflowSection client:load />
+      <DataModelSection client:load />
+      <FavoritesSection client:load />
       <FAQSection client:load />
-      <ContactSection client:load />
+      
+      {/* Bottom CTA */}
+      <section class="py-32 w-full text-center flex flex-col items-center justify-center relative overflow-hidden z-10 mt-12">
+        <div class="absolute inset-0 bg-gradient-to-t from-green-50/50 to-transparent -z-10"></div>
+        <RevealText client:load>
+          <span class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 block">Take the Next Step</span>
+        </RevealText>
+        <RevealText client:load delay={0.1}>
+          <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4 max-w-2xl mx-auto">
+            Ready to Digitize Your Mahallu?
+          </h2>
+        </RevealText>
+        <p class="text-gray-500 text-sm max-w-lg mb-8 animate-fade-in opacity-0 mx-auto" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
+          Request a personalized demo to see how Mahallu ERP can help your Mahallu digitize daily operations and improve community services.
+        </p>
+        <div class="flex gap-4 animate-slide-up opacity-0" style="animation-delay: 0.4s; animation-fill-mode: forwards;">
+          <Button client:load size="lg" class="rounded-full bg-[#111] hover:bg-black text-white px-8 h-12">Request a Demo</Button>
+          <Button client:load size="lg" variant="outline" class="rounded-full bg-white border-gray-200 px-8 h-12 text-gray-900">Contact Us</Button>
+        </div>
+      </section>
+      
     </main>
     <Footer client:load />
   </I18nProvider>

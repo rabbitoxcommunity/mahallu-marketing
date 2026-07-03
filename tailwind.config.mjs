@@ -5,33 +5,48 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: 'hsl(var(--color-primary) / <alpha-value>)',
-        'primary-foreground': 'hsl(var(--color-primary-foreground) / <alpha-value>)',
-        secondary: 'hsl(var(--color-secondary) / <alpha-value>)',
-        'secondary-foreground': 'hsl(var(--color-secondary-foreground) / <alpha-value>)',
-        background: 'hsl(var(--color-background) / <alpha-value>)',
-        foreground: 'hsl(var(--color-foreground) / <alpha-value>)',
-        card: 'hsl(var(--color-card) / <alpha-value>)',
-        'card-foreground': 'hsl(var(--color-card-foreground) / <alpha-value>)',
-        muted: 'hsl(var(--color-muted) / <alpha-value>)',
-        'muted-foreground': 'hsl(var(--color-muted-foreground) / <alpha-value>)',
-        accent: 'hsl(var(--color-accent) / <alpha-value>)',
-        'accent-foreground': 'hsl(var(--color-accent-foreground) / <alpha-value>)',
-        destructive: 'hsl(var(--color-destructive) / <alpha-value>)',
-        'destructive-foreground': 'hsl(var(--color-destructive-foreground) / <alpha-value>)',
-        border: 'hsl(var(--color-border) / <alpha-value>)',
-        input: 'hsl(var(--color-input) / <alpha-value>)',
-        ring: 'hsl(var(--color-ring) / <alpha-value>)',
+        primary: 'hsl(var(--primary) / <alpha-value>)',
+        'primary-foreground': 'hsl(var(--primary-foreground) / <alpha-value>)',
+        secondary: 'hsl(var(--secondary) / <alpha-value>)',
+        'secondary-foreground': 'hsl(var(--secondary-foreground) / <alpha-value>)',
+        background: 'hsl(var(--background) / <alpha-value>)',
+        foreground: 'hsl(var(--foreground) / <alpha-value>)',
+        card: 'hsl(var(--card) / <alpha-value>)',
+        'card-foreground': 'hsl(var(--card-foreground) / <alpha-value>)',
+        muted: 'hsl(var(--muted) / <alpha-value>)',
+        'muted-foreground': 'hsl(var(--muted-foreground) / <alpha-value>)',
+        accent: 'hsl(var(--accent) / <alpha-value>)',
+        'accent-foreground': 'hsl(var(--accent-foreground) / <alpha-value>)',
+        destructive: 'hsl(var(--destructive) / <alpha-value>)',
+        'destructive-foreground': 'hsl(var(--destructive-foreground) / <alpha-value>)',
+        border: 'hsl(var(--border) / <alpha-value>)',
+        input: 'hsl(var(--input) / <alpha-value>)',
+        ring: 'hsl(var(--ring) / <alpha-value>)',
       },
       borderRadius: {
-        xl: 'var(--radius-xl)',
-        '2xl': 'var(--radius-2xl)',
+        xl: 'calc(var(--radius) + 4px)',
+        '2xl': 'calc(var(--radius) + 8px)',
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
       },
       animation: {
-        'accordion-down': 'var(--animate-accordion-down)',
-        'accordion-up': 'var(--animate-accordion-up)',
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 0.5s ease-out forwards',
+        'slide-up': 'slide-up 0.5s ease-out forwards',
       },
-    },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'slide-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        }
+      }
+    }
   },
   plugins: [],
 }

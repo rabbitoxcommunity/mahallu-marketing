@@ -20,10 +20,10 @@ export function Navbar() {
   }, [])
 
   const navLinks = [
-    { name: t("nav.features"), href: "#features" },
-    { name: t("nav.publicPortal"), href: "#portal" },
-    { name: t("nav.pricing"), href: "#pricing" },
-    { name: t("nav.faq"), href: "#faq" },
+    { name: t("nav.home") || "Home", href: "/" },
+    { name: t("nav.features") || "Features", href: "/features" },
+    { name: t("nav.about") || "About", href: "/about" },
+    { name: t("nav.contact") || "Contact", href: "/contact" },
   ]
 
   return (
@@ -31,14 +31,14 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b shadow-sm py-3"
-          : "bg-background py-5 border-b"
+          ? "bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm py-3"
+          : "bg-transparent py-5"
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
+          <a href="/" className="flex items-center gap-2 group">
             <div className="text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5V12H9v4.5H7.5V12h-2V7.5h2V6c0-1.66 1.34-3 3-3h1.5v1.5h-1.5c-.83 0-1.5.67-1.5 1.5v1.5h2v1.5h-2v4.5H11z"/></svg>
             </div>
@@ -62,7 +62,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <LanguageSwitcher />
             <ThemeToggle />
-            <Button className="rounded-full px-6">{t("nav.requestDemo")}</Button>
+            <Button className="rounded-full px-6 bg-[#111] hover:bg-black text-white font-semibold text-xs h-9">Start for Free</Button>
           </div>
 
           {/* Mobile Menu Toggle */}

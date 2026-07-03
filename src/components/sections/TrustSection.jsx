@@ -1,46 +1,38 @@
-import { useTranslation } from "react-i18next"
 import { motion } from "framer-motion"
-import { Cloud, Users, Shield, Smartphone, Languages, Lock } from "lucide-react"
+import { RevealText } from "../animations/RevealText"
 
 export function TrustSection() {
-  const { t } = useTranslation()
-
-  const trustItems = [
-    { key: "cloudBased", icon: <Cloud className="w-5 h-5" /> },
-    { key: "multiTenant", icon: <Users className="w-5 h-5" /> },
-    { key: "secure", icon: <Shield className="w-5 h-5" /> },
-    { key: "mobileFriendly", icon: <Smartphone className="w-5 h-5" /> },
-    { key: "bilingual", icon: <Languages className="w-5 h-5" /> },
-    { key: "roleBasedAccess", icon: <Lock className="w-5 h-5" /> },
-  ]
+  const logos = [1, 2, 3, 4, 5, 6]
 
   return (
-    <section className="py-12 bg-background border-b overflow-hidden">
+    <section className="py-10 bg-transparent border-t border-gray-100 overflow-hidden relative z-10 mt-12 md:mt-0">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-8">
-          <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest">
-            Trusted by 400+ Mahallus
-          </p>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+          
+          <RevealText delay={0.2}>
+            <p className="text-sm font-semibold text-gray-500 whitespace-nowrap">
+              Trusted By
+            </p>
+          </RevealText>
+          
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="flex flex-wrap justify-center items-center gap-8 md:gap-12"
+          >
+            {logos.map((i) => (
+              <div key={i} className="flex items-center gap-2 text-gray-400 opacity-60 hover:opacity-100 transition-opacity">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                </svg>
+                <span className="font-bold text-lg tracking-tight">LogoIpsum</span>
+              </div>
+            ))}
+          </motion.div>
+          
         </div>
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500"
-        >
-          {trustItems.map((item) => (
-            <div 
-              key={item.key} 
-              className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors cursor-default"
-            >
-              {item.icon}
-              <span className="font-bold text-lg tracking-tight">
-                {t(`trust.${item.key}`)}
-              </span>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   )

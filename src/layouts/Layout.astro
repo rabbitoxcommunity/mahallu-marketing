@@ -2,22 +2,65 @@
 import '../index.css'
 
 interface Props {
-  title?: string
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
 }
 
-const { title = 'Mahallu ERP' } = Astro.props
+const { 
+  title = 'Mahallu ERP - Modern Community Management Platform',
+  description = 'Mahallu ERP is an all-in-one cloud platform designed specifically for Mahallu committees and mosque management organizations.',
+  image = '/og-image.jpg',
+  canonicalURL = Astro.url.href,
+} = Astro.props
+
+const seoKeywords = "Mahallu ERP, Mahallu Management Software, Mosque Management Software, Masjid ERP, Islamic Community Management Software, Mosque Administration Software, Mahallu Software, Kerala Community ERP, Mosque Finance Software, Marriage Certificate Software, Death Certificate Management, Welfare Management Software, Blood Donor Management, Public Service Portal, Islamic Organization ERP"
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Mahallu ERP",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Mahallu ERP is a cloud-based software platform that helps Mahallu committees manage members, finance, welfare, marriage and death records, certificates, communication, and public services in one secure system. It reduces paperwork, improves transparency, centralizes records, enables secure collaboration, and provides digital services for members through a public portal.",
+  "about": "Mahallu ERP is an all-in-one cloud platform designed specifically for Mahallu committees and mosque management organizations. It combines community management, financial administration, welfare programs, certificate generation, marriage and death registries, communication tools, result management, and a public service portal into one integrated solution. The platform supports English and Malayalam, role-based permissions, multi-tenant architecture, and mobile-friendly access, making it suitable for Mahallus of different sizes across Kerala and beyond."
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={seoKeywords} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <!-- JSON-LD for Answer Engines (AEO) and Generative Engines (GEO) -->
+    <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
   </head>
-  <body>
+  <body class="text-foreground antialiased min-h-screen flex flex-col font-sans">
     <slot />
   </body>
 </html>

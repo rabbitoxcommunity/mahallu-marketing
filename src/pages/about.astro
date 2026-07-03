@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { I18nProvider } from '../components/providers/I18nProvider.jsx'
+import { Navbar } from '../components/layout/Navbar.jsx'
+import { Footer } from '../components/layout/Footer.jsx'
+import { FAQSection } from '../components/sections/FAQSection.jsx'
+import { TrustSection } from '../components/sections/TrustSection.jsx'
+
+export const prerender = true
+---
+
+<Layout 
+  title="About Us & FAQ - Mahallu ERP"
+  description="Learn more about Mahallu ERP and find answers to frequently asked questions about our community management platform."
+>
+  <I18nProvider client:load>
+    <Navbar client:load />
+    <main class="flex-1 w-full flex flex-col items-center min-h-screen pt-24">
+      <div class="w-full py-12 md:py-20 lg:py-24 text-center px-4 md:px-6">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-4 animate-fade-in">About Mahallu ERP</h1>
+        <p class="max-w-[700px] mx-auto text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed animate-slide-up">
+          Empowering communities with digital solutions that foster connection, transparency, and growth.
+        </p>
+      </div>
+      <TrustSection client:load />
+      <FAQSection client:load />
+    </main>
+    <Footer client:load />
+  </I18nProvider>
+</Layout>
