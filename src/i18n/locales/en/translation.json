@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "features": "Features",
+    "publicPortal": "Public Portal",
+    "pricing": "Pricing",
+    "security": "Security",
+    "faq": "FAQ",
+    "requestDemo": "Request Demo"
+  },
+  "hero": {
+    "headline": "Everything Your Mahallu Needs. One Secure Platform.",
+    "subtitle": "Digitally manage your Mahallu with one integrated platform for Members, Finance, Welfare, Certificates, Communication, Public Services and much more.",
+    "requestDemo": "Request Demo",
+    "watchDemo": "Watch Demo"
+  },
+  "trust": {
+    "cloudBased": "Cloud Based",
+    "multiTenant": "Multi Tenant",
+    "secure": "Secure",
+    "mobileFriendly": "Mobile Friendly",
+    "bilingual": "Bilingual",
+    "roleBasedAccess": "Role Based Access"
+  },
+  "features": {
+    "title": "A Complete Solution for Modern Mahallus",
+    "community": {
+      "title": "Community Management",
+      "description": "Manage every family and member from one centralized database."
+    },
+    "finance": {
+      "title": "Finance Management",
+      "description": "Complete financial management with transparency."
+    },
+    "welfare": {
+      "title": "Welfare Management",
+      "description": "Manage welfare requests and beneficiaries efficiently."
+    },
+    "registry": {
+      "title": "Registry Management",
+      "description": "Digitally maintain important community records."
+    },
+    "communication": {
+      "title": "Communication Center",
+      "description": "Communicate with the entire Mahallu easily."
+    }
+  },
+  "why": {
+    "title": "Why Choose Mahallu ERP?",
+    "onePlatform": {
+      "title": "One Platform",
+      "desc": "Everything in one system."
+    },
+    "paperless": {
+      "title": "Paperless",
+      "desc": "Reduce paperwork."
+    },
+    "cloudBased": {
+      "title": "Cloud Based",
+      "desc": "Access anywhere."
+    },
+    "mobileReady": {
+      "title": "Mobile Ready",
+      "desc": "Works perfectly on mobile."
+    },
+    "roleBased": {
+      "title": "Role Based",
+      "desc": "Control user permissions."
+    },
+    "bilingual": {
+      "title": "Bilingual",
+      "desc": "English & Malayalam."
+    },
+    "secure": {
+      "title": "Secure",
+      "desc": "Your data stays protected."
+    },
+    "scalable": {
+      "title": "Scalable",
+      "desc": "Built for Mahallus of every size."
+    }
+  },
+  "cta": {
+    "title": "Ready to Digitize Your Mahallu?",
+    "subtitle": "Request a Live Demo Today.",
+    "requestDemo": "Request Demo",
+    "contactUs": "Contact Us"
+  }
+}
