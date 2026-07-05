@@ -1,0 +1,31 @@
+---
+export const prerender = false;
+
+import PortalLayout from '../../../components/portal/PortalLayout.astro';
+import ResultsIsland from '../../../components/portal/ResultsIsland.jsx';
+import { fetchTenantInfo, fetchPublicResults } from '../../../lib/portalApi';
+
+const slug = Astro.url.searchParams.get('t') || '';
+let tenant = null;
+let data = [];
+let lockedYear = null;
+
+if (slug) {
+  try {
+    tenant = await fetchTenantInfo(slug);
+  } catch {
+    tenant = null;
+  }
+  if (tenant && tenant.services?.results !== false) {
+    try {
+      const res = await fetchPublicResults(slug);
+      data = res.data || [];
+      lockedYear = res.locked_academic_year || null;
+    } catch { /* keep defaults */ }
+  }
+}
+---
+
+<PortalLayout tenant={tenant} slug={slug} currentPath={Astro.url.pathname} title="Madrasa Results">
+  {tenant && <ResultsIsland client:load data={data} lockedYear={lockedYear} />}
+</PortalLayout>

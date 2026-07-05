@@ -84,5 +84,88 @@
     "subtitle": "Request a Live Demo Today.",
     "requestDemo": "Request Demo",
     "contactUs": "Contact Us"
+  },
+  "portal": {
+    "mahallu": "Mahallu",
+    "poweredBy": "Powered by",
+    "viewAll": "View All",
+    "readMore": "Read More",
+    "all": "All",
+    "page": "Page",
+    "comingSoon": "Coming Soon",
+    "openService": "Open Service",
+    "latestAnnouncements": "Latest Announcements",
+    "workingHours": "Working Hours",
+    "searchPlaceholder": "Search...",
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "announcements": "Announcements",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "hero": {
+      "welcome": "Welcome to",
+      "subtitle": "Access official services, announcements and information from your Mahallu."
+    },
+    "services": {
+      "subtitle": "All available public services from your Mahallu.",
+      "marriageCert": "Marriage Certificate",
+      "marriageCertDesc": "Download your official marriage certificate by certificate number.",
+      "deathCert": "Death Certificate",
+      "deathCertDesc": "Download official death certificates.",
+      "results": "Exam Results",
+      "resultsDesc": "View published madrasa and exam results.",
+      "bloodDonor": "Blood Donor Search",
+      "bloodDonorDesc": "Find blood donors by blood group in your community.",
+      "announcements": "Announcements",
+      "announcementsDesc": "Read the latest official announcements from your Mahallu.",
+      "islamicServices": "Islamic Services",
+      "islamicServicesDesc": "Prayer times, Qibla direction & library"
+    },
+    "announcements": {
+      "subtitle": "Official announcements published by your Mahallu.",
+      "empty": "No announcements available at this time."
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Reach out to your Mahallu office.",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "mapPlaceholder": "Map integration coming soon."
+    },
+    "marriageCert": {
+      "subtitle": "Enter your certificate number to download your official marriage certificate.",
+      "certNoLabel": "Certificate Number",
+      "download": "Download Certificate",
+      "notFound": "Certificate not found. Please check the number and try again.",
+      "downloadSuccess": "Certificate downloaded successfully.",
+      "hint": "The certificate number is printed on your marriage registration receipt."
+    },
+    "results": {
+      "subtitle": "Published exam results from your Mahallu.",
+      "empty": "No results published yet."
+    },
+    "bloodDonor": {
+      "subtitle": "Search for blood donors in your community by blood group.",
+      "selectGroup": "Select Blood Group",
+      "search": "Search Donors",
+      "notFound": "No donors found for {{group}}.",
+      "found": "donors found"
+    },
+    "islamic": {
+      "title": "Islamic Services",
+      "subtitle": "Prayer times, Qibla direction, Surahs & Duas",
+      "prayerTimes": "Prayer Times",
+      "qibla": "Qibla Direction",
+      "surahLibrary": "Surah Library",
+      "duaLibrary": "Dua Library",
+      "openPdf": "Open PDF",
+      "nextPrayer": "Next",
+      "findQibla": "Find Qibla Direction",
+      "noLocation": "Prayer location not configured. Contact your Mahallu admin.",
+      "noLocationQibla": "Location not configured for Qibla direction"
+    }
   }
 }

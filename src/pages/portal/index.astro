@@ -1,0 +1,30 @@
+---
+export const prerender = false;
+
+import PortalLayout from '../../components/portal/PortalLayout.astro';
+import HomeIsland from '../../components/portal/HomeIsland.jsx';
+import { fetchTenantInfo, fetchAnnouncements } from '../../lib/portalApi';
+
+const slug = Astro.url.searchParams.get('t') || '';
+let tenant = null;
+let announcements = [];
+if (slug) {
+  try {
+    tenant = await fetchTenantInfo(slug);
+  } catch {
+    tenant = null;
+  }
+  if (tenant && tenant.services?.announcements !== false) {
+    try {
+      const res = await fetchAnnouncements(slug, { limit: 3 });
+      announcements = res.data || [];
+    } catch {
+      announcements = [];
+    }
+  }
+}
+---
+
+<PortalLayout tenant={tenant} slug={slug} currentPath={Astro.url.pathname}>
+  {tenant && <HomeIsland client:load tenant={tenant} slug={slug} announcements={announcements} />}
+</PortalLayout>

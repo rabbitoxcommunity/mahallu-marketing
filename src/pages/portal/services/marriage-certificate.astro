@@ -1,0 +1,21 @@
+---
+export const prerender = false;
+
+import PortalLayout from '../../../components/portal/PortalLayout.astro';
+import MarriageCertificateIsland from '../../../components/portal/MarriageCertificateIsland.jsx';
+import { fetchTenantInfo } from '../../../lib/portalApi';
+
+const slug = Astro.url.searchParams.get('t') || '';
+let tenant = null;
+if (slug) {
+  try {
+    tenant = await fetchTenantInfo(slug);
+  } catch {
+    tenant = null;
+  }
+}
+---
+
+<PortalLayout tenant={tenant} slug={slug} currentPath={Astro.url.pathname} title="Marriage Certificate">
+  {tenant && <MarriageCertificateIsland client:load slug={slug} />}
+</PortalLayout>

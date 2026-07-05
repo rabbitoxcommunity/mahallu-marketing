@@ -1,0 +1,42 @@
+---
+export const prerender = false;
+
+import PortalLayout from '../../../components/portal/PortalLayout.astro';
+import IslamicServicesIsland from '../../../components/portal/IslamicServicesIsland.jsx';
+import { fetchTenantInfo, getPublicSurahs, getPublicDuas } from '../../../lib/portalApi';
+
+const slug = Astro.url.searchParams.get('t') || '';
+let tenant = null;
+let initialSurahs = [];
+let initialDuas = [];
+
+if (slug) {
+  try {
+    tenant = await fetchTenantInfo(slug);
+  } catch {
+    tenant = null;
+  }
+  if (tenant) {
+    try {
+      const res = await getPublicSurahs(slug);
+      initialSurahs = res?.data || [];
+    } catch { /* keep defaults */ }
+    try {
+      const res = await getPublicDuas(slug);
+      initialDuas = res?.data || [];
+    } catch { /* keep defaults */ }
+  }
+}
+---
+
+<PortalLayout tenant={tenant} slug={slug} currentPath={Astro.url.pathname} title="Islamic Services">
+  {tenant && (
+    <IslamicServicesIsland
+      client:load
+      tenant={tenant}
+      slug={slug}
+      initialSurahs={initialSurahs}
+      initialDuas={initialDuas}
+    />
+  )}
+</PortalLayout>

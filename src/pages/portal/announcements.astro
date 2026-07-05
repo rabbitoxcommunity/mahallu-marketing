@@ -1,0 +1,44 @@
+---
+export const prerender = false;
+
+import PortalLayout from '../../components/portal/PortalLayout.astro';
+import AnnouncementsIsland from '../../components/portal/AnnouncementsIsland.jsx';
+import { fetchTenantInfo, fetchAnnouncements, fetchAnnouncementCategories } from '../../lib/portalApi';
+
+const slug = Astro.url.searchParams.get('t') || '';
+let tenant = null;
+let initialData = [];
+let initialTotalPages = 1;
+let initialCategories = [];
+
+if (slug) {
+  try {
+    tenant = await fetchTenantInfo(slug);
+  } catch {
+    tenant = null;
+  }
+  if (tenant && tenant.services?.announcements !== false) {
+    try {
+      const res = await fetchAnnouncements(slug, { page: 1, limit: 9 });
+      initialData = res.data || [];
+      initialTotalPages = res.totalPages || 1;
+    } catch { /* keep defaults */ }
+    try {
+      const res = await fetchAnnouncementCategories(slug);
+      initialCategories = res.data || [];
+    } catch { /* keep defaults */ }
+  }
+}
+---
+
+<PortalLayout tenant={tenant} slug={slug} currentPath={Astro.url.pathname} title="Announcements">
+  {tenant && (
+    <AnnouncementsIsland
+      client:load
+      slug={slug}
+      initialData={initialData}
+      initialTotalPages={initialTotalPages}
+      initialCategories={initialCategories}
+    />
+  )}
+</PortalLayout>
