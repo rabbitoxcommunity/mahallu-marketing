@@ -383,7 +383,7 @@ const IslamicServicesIsland = ({ tenant, slug, initialSurahs = [], initialDuas =
             {t('portal.islamic.title', { defaultValue: 'Islamic Services' })}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 text-base font-medium">
-            {t('portal.islamic.subtitle', { defaultValue: 'Prayer times, Qibla direction, Surahs & Duas' })}
+            {t('portal.islamic.subtitle', { defaultValue: 'Prayer times, Surahs & Duas' })}
           </p>
         </motion.div>
 
@@ -404,21 +404,7 @@ const IslamicServicesIsland = ({ tenant, slug, initialSurahs = [], initialDuas =
             </motion.div>
           )}
 
-          {hasLocation && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="bg-white/40 dark:bg-[#0a0a0a]/40 backdrop-blur-2xl rounded-3xl border border-white/40 dark:border-white/10 p-6 shadow-sm"
-            >
-              <SectionHeader
-                icon={Compass}
-                titleEn={t('portal.islamic.qibla', { defaultValue: 'Qibla Direction' })}
-                titleMl="ഖിബ്ല ദിശ"
-                color="bg-teal-500"
-                lang={lang}
-              />
-              <QiblaSection prayerLocation={prayerLocation} lang={lang} />
-            </motion.div>
-          )}
+
 
           {surahs.length > 0 && (
             <motion.div
