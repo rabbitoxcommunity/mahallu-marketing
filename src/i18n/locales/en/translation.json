@@ -106,7 +106,7 @@
     },
     "hero": {
       "welcome": "Welcome to",
-      "subtitle": "Access official services, announcements and information from your Mahallu."
+      "subtitle": "Access official services, announcements and information from {{mahallu}}."
     },
     "services": {
       "subtitle": "All available public services from your Mahallu.",

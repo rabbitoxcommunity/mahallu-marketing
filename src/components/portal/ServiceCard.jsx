@@ -1,44 +1,37 @@
 import React from 'react';
-import { ArrowRight, Lock } from 'lucide-react';
+import { Lock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import '../../i18n/config';
 
-const ServiceCard = ({ icon: Icon, title, description, to, disabled = false, color = 'blue' }) => {
+const ServiceCard = ({ icon: Icon, title, to, disabled = false, isActive = false }) => {
   const { t } = useTranslation();
 
-  const colors = {
-    blue:   { bg: 'bg-blue-50/50 dark:bg-blue-900/10',   icon: 'bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400' },
-    green:  { bg: 'bg-emerald-50/50 dark:bg-emerald-900/10', icon: 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400' },
-    red:    { bg: 'bg-rose-50/50 dark:bg-rose-900/10',     icon: 'bg-rose-100 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400' },
-    purple: { bg: 'bg-purple-50/50 dark:bg-purple-900/10', icon: 'bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400' },
-  };
-  const c = colors[color] || colors.blue;
-
   const inner = (
-    <div className={`rounded-[2rem] p-6 sm:p-8 border border-white/40 dark:border-white/10 bg-white/40 dark:bg-[#0a0a0a]/40 backdrop-blur-3xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] h-full flex flex-col gap-5 relative overflow-hidden group ${
+    <div className={`rounded-2xl p-6 bg-white dark:bg-[#0a0a0a] shadow-[0_2px_15px_rgba(0,0,0,0.02)] h-full min-h-[160px] flex flex-col items-center justify-center text-center relative transition-all duration-300 group ${
       !disabled
-        ? 'hover:bg-white/60 dark:hover:bg-[#111]/60 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)] hover:-translate-y-1 transition-all duration-500 ease-out'
+        ? 'hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]'
         : 'opacity-50 cursor-not-allowed'
     }`}>
-
-      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${c.icon} shadow-inner`}>
-        <Icon size={26} strokeWidth={1.5} />
+      
+      <div className={`mb-3 transition-colors duration-300 ${isActive || (!disabled && 'group-hover:text-[var(--portal-theme)]') ? 'text-[var(--portal-theme)]' : 'text-gray-700 dark:text-gray-300'}`}>
+        <Icon size={32} strokeWidth={1.25} />
       </div>
 
-      <div className="flex-1">
-        <h3 className="font-extrabold text-gray-900 dark:text-white text-lg tracking-tight mb-2">{title}</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{description}</p>
-      </div>
+      <h3 className={`font-semibold text-sm tracking-tight transition-colors duration-300 ${isActive || (!disabled && 'group-hover:text-[var(--portal-theme)]') ? 'text-[var(--portal-theme)]' : 'text-gray-900 dark:text-white'}`}>
+        {title}
+      </h3>
+      
+      {disabled && (
+         <div className="flex items-center justify-center gap-1.5 text-[10px] font-bold text-gray-400 mt-2">
+           <Lock size={10} />{t('portal.comingSoon')}
+         </div>
+      )}
 
-      <div className={`flex items-center gap-2 text-sm font-bold ${
-        disabled ? 'text-gray-400' : 'text-gray-900 dark:text-white group-hover:gap-3 transition-all duration-300'
-      }`}>
-        {disabled ? (
-          <><Lock size={14} />{t('portal.comingSoon')}</>
-        ) : (
-          <>{t('portal.openService')} <ArrowRight size={14} /></>
-        )}
-      </div>
+      {!disabled && (
+        <div className={`text-[11px] font-semibold mt-2.5 transition-all duration-300 text-[var(--portal-theme)] ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+          <span className="border-b border-[var(--portal-theme)] pb-0.5">View Details</span>
+        </div>
+      )}
     </div>
   );
 
