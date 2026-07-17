@@ -106,39 +106,41 @@ const HomeIsland = ({ tenant, slug, announcements = [] }) => {
       {selected && <AnnouncementModal announcement={selected} onClose={() => setSelected(null)} />}
 
       {/* HERO SECTION */}
-      <section className="relative pt-32 pb-12 px-4 sm:px-6">
+      <section className="relative pt-24 sm:pt-32 pb-10 sm:pb-12 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-8 sm:p-16 flex flex-col md:flex-row items-center justify-between min-h-[480px]"
+          <div className="relative rounded-3xl sm:rounded-[2.5rem] overflow-hidden p-6 sm:p-12 lg:p-16 flex flex-col md:flex-row items-start md:items-center justify-center md:justify-between min-h-[360px] md:min-h-[480px]"
                style={{ 
-                 backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), url('https://images.pexels.com/photos/38498729/pexels-photo-38498729.jpeg')`,
+                 backgroundImage: `url('https://images.pexels.com/photos/38498729/pexels-photo-38498729.jpeg')`,
                  backgroundSize: 'cover',
                  backgroundPosition: 'center',
                  backgroundColor: themeColor 
                }}>
-            {/* Background decorative elements */}
-            <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')] mix-blend-overlay pointer-events-none"></div>
+            {/* Responsive dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/50 md:bg-transparent md:bg-gradient-to-r md:from-black/80 md:to-black/20 pointer-events-none z-0"></div>
             
-            <div className="relative z-10 w-full md:w-1/2 text-left">
+            {/* Background decorative elements */}
+            <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')] mix-blend-overlay pointer-events-none z-0"></div>
+            
+            <div className="relative z-10 w-full md:w-1/2 text-left mt-0 flex flex-col items-start">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-[1.1]"
+                className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight leading-[1.1]"
               >
                 {t('portal.hero.welcome', { defaultValue: 'Welcome to' })} <br />
                 Mahallu Portal
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-                className="text-lg text-white/90 max-w-lg font-medium leading-relaxed mb-10"
+                className="text-base sm:text-lg text-white/90 max-w-lg font-medium leading-relaxed mb-6 sm:mb-10 mx-0"
               >
                 {t('portal.hero.subtitle', { mahallu: tenant?.name || 'your Mahallu', defaultValue: `Access official services, announcements and information from ${tenant?.name || 'your Mahallu'}.` })}
               </motion.p>
-              
             </div>
             
-            <div className="relative z-10 w-full md:w-1/2 mt-12 md:mt-0 flex justify-end pointer-events-none">
+            <div className="hidden md:flex relative z-10 w-full md:w-1/2 justify-end pointer-events-none">
                 {/* Abstract illustration/placeholder */}
-                <div className="w-[300px] h-[300px] bg-white/20 rounded-full blur-3xl absolute right-10"></div>
-                <div className="w-[200px] h-[200px] bg-white/30 rounded-full blur-2xl absolute top-10 right-20"></div>
+                <div className="w-[200px] lg:w-[300px] h-[200px] lg:h-[300px] bg-white/20 rounded-full blur-3xl absolute right-10"></div>
+                <div className="w-[150px] lg:w-[200px] h-[150px] lg:h-[200px] bg-white/30 rounded-full blur-2xl absolute top-10 right-20"></div>
             </div>
           </div>
         </div>
@@ -178,11 +180,11 @@ const HomeIsland = ({ tenant, slug, announcements = [] }) => {
             <div className="bg-white dark:bg-[#0a0a0a] border border-gray-100 dark:border-gray-800 rounded-[2.5rem] p-8 sm:p-12 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
                
                {/* Left: Times */}
-               <div className="w-full md:w-1/2 relative z-10">
-                  <h2 className="text-2xl font-extrabold mb-8 tracking-tight" style={{ color: themeColor }}>
+               <div className="w-full md:w-1/2 relative z-10 text-center md:text-left">
+                  <h2 className="text-2xl font-extrabold mb-6 md:mb-8 tracking-tight" style={{ color: themeColor }}>
                     {t('portal.islamic.prayerTimes', { defaultValue: 'Prayer Times' })}
                   </h2>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                      {[
                        { key: 'fajr', nameEn: 'Fajr', nameMl: 'ഫജ്ർ' },
                        { key: 'sunrise', nameEn: 'Sunrise', nameMl: 'സൂര്യോദയം' },
@@ -207,7 +209,7 @@ const HomeIsland = ({ tenant, slug, announcements = [] }) => {
                </div>
 
                {/* Right: Location & Current */}
-               <div className="w-full md:w-1/3 relative z-10 md:text-left flex flex-col justify-center">
+               <div className="w-full md:w-1/3 relative z-10 text-center md:text-left flex flex-col justify-center items-center md:items-start mt-8 md:mt-0 pt-8 md:pt-0 border-t md:border-t-0 md:border-l border-gray-100 dark:border-gray-800 md:pl-10">
                   <div className="text-xl font-bold" style={{ color: themeColor }}>
                     {tenant?.prayer_location?.city || tenant?.name}
                   </div>
